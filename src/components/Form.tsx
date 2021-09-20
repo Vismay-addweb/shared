@@ -1,8 +1,11 @@
 import { useState } from "react";
 import List from "./List";
 import * as type from './type'
+import {useSelector,useDispatch} from 'react-redux'
 const Form = () =>
 {
+    const d = useSelector((state:any)=>state)
+    const dispatch  = useDispatch()
     const [uname, setUname] = useState('')
     const [age, setAge]= useState('0')
     const [error,setError] = useState({for:'',message:''})
@@ -21,7 +24,8 @@ const Form = () =>
         setUname(e.target.value)
     }
     const del = (unamer:string) =>{
-        setData(data.filter(data=> data.uname !== unamer))
+        // setData(data.filter(data=> data.uname !== unamer))
+        dispatch({type:'DEL',name:unamer})
     }
     const changeAge = (e:any) =>
     {
@@ -42,6 +46,7 @@ const Form = () =>
             uname:uname,
             age:parseInt(age)
         }    
+        dispatch({type:'ADD',data:submitted_data})
         setAge('')
         setUname('')
         setData([...data,submitted_data])    
@@ -54,7 +59,7 @@ const Form = () =>
             <input type='submit' value='submit' />
             {error &&  <p>{error.for}{error.message} </p>}
         </form>
-        <List data={data} deletedata={del} />
+        <List data={d} deletedata={del} />
         </>
     )
 }
