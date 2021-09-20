@@ -18,12 +18,12 @@ function reducer(state = dummy, action: any) {
     case "ADD":
       return {
         ...state,
-        data: state.data.concat(action.data),
+        data: state.data.concat(action.data.data),
       };
     case "DEL":
       return {
         ...state,
-        data: state.data.filter((data) => data.uname !== action.name),
+        data: state.data.filter((data) => data.uname !== action.name.data),
       };
     default:
       return state;

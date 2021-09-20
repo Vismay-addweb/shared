@@ -1,5 +1,6 @@
 import { useState } from "react";
 import List from "./List";
+import {add,del} from '../store/action'
 import * as type from './type'
 import {useSelector,useDispatch} from 'react-redux'
 const Form = () =>
@@ -23,9 +24,9 @@ const Form = () =>
     {
         setUname(e.target.value)
     }
-    const del = (unamer:string) =>{
+    const dell = (unamer:string) =>{
         // setData(data.filter(data=> data.uname !== unamer))
-        dispatch({type:'DEL',name:unamer})
+        dispatch(del(unamer))
     }
     const changeAge = (e:any) =>
     {
@@ -46,7 +47,7 @@ const Form = () =>
             uname:uname,
             age:parseInt(age)
         }    
-        dispatch({type:'ADD',data:submitted_data})
+        dispatch(add(submitted_data))
         setAge('')
         setUname('')
         setData([...data,submitted_data])    
@@ -59,7 +60,7 @@ const Form = () =>
             <input type='submit' value='submit' />
             {error &&  <p>{error.for}{error.message} </p>}
         </form>
-        <List data={d} deletedata={del} />
+        <List data={d} deletedata={dell} />
         </>
     )
 }
