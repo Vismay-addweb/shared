@@ -1,9 +1,10 @@
 import React from 'react'
-import * as type from './type'
-const List: React.FC<{data:type.data[],deletedata:(string:string)=>void}>  = (props) =>
+import * as type from '../store/type'
+import Config from '../Firebaseconfig'
+const List: React.FC<{data:type.data,deletedata:(string:string)=>void}>  = (props) =>
 {
-
     return(
+        <>
         <table className='table'>
             <thead>
                 <tr>
@@ -14,7 +15,7 @@ const List: React.FC<{data:type.data[],deletedata:(string:string)=>void}>  = (pr
             </thead>
             <tbody>
 
-            {props.data.map(data=> (
+            {props.data.data.map(data=> (
             <tr key={Math.random()}>
                 <td>{data.uname}</td>
                 <td>{data.age} </td>
@@ -23,7 +24,7 @@ const List: React.FC<{data:type.data[],deletedata:(string:string)=>void}>  = (pr
             ))}
             </tbody>
         </table>
-        
+        </>
     )
 }
 

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import List from "./List";
 import * as type from './type'
+import {useSelector,useDispatch} from 'react-redux'
 const Form = () =>
 {
+    const d = useSelector((state:any)=>state)
+    const dispatch  = useDispatch()
     const [uname, setUname] = useState('')
-    const [age, setAge]= useState(0)
+    const [age, setAge]= useState('0')
     const [error,setError] = useState({for:'',message:''})
     const dummy : type.data[] =[{
         uname:'vismay',
@@ -21,7 +24,8 @@ const Form = () =>
         setUname(e.target.value)
     }
     const del = (unamer:string) =>{
-        setData(data.filter(data=> data.uname !== unamer))
+        // setData(data.filter(data=> data.uname !== unamer))
+        dispatch({type:'DEL',name:unamer})
     }
     const changeAge = (e:any) =>
     {
@@ -29,30 +33,33 @@ const Form = () =>
     }
     const submitted = (e:any) =>{
         e.preventDefault()
-        if(uname==='' || age<=0)
+        if(uname==='' || parseInt(age)<=0)
         {
             if(uname === '')
             setError({for:'user name ',message:'missing value'})
-            if(age<=0)
+            if(parseInt(age)<=0)
             setError({for:'age ',message:'less than 0'})
-            if(uname===''&& age<=0)
+            if(uname===''&& parseInt(age)<=0)
             setError({for:'user name and age ' ,message:'missing'})
             return}
         const submitted_data : type.data ={
             uname:uname,
-            age:age
+            age:parseInt(age)
         }    
+        dispatch({type:'ADD',data:submitted_data})
+        setAge('')
+        setUname('')
         setData([...data,submitted_data])    
     }
     return(
         <>
         <form onSubmit={submitted}>
-            <label> username<input type='text' name='uname' onChange={changeUname} /></label><br></br>
-            <label> age<input type='number' name='age' onChange={changeAge} /></label><br></br>
+            <label> username<input type='text' name='uname' value={uname} onChange={changeUname} /></label><br></br>
+            <label> age<input type='number' name='age' value={age} onChange={changeAge} /></label><br></br>
             <input type='submit' value='submit' />
             {error &&  <p>{error.for}{error.message} </p>}
         </form>
-        <List data={data} deletedata={del} />
+        <List data={d} deletedata={del} />
         </>
     )
 }
