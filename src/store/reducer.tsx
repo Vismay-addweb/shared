@@ -1,5 +1,4 @@
 import * as type from "./type";
-import React from "react";
 const dummy: type.data = {
   data: [
     {

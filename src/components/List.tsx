@@ -1,6 +1,5 @@
 import React from 'react'
 import * as type from '../store/type'
-import Config from '../Firebaseconfig'
 const List: React.FC<{data:type.data,deletedata:(string:string)=>void}>  = (props) =>
 {
     return(

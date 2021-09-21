@@ -2,6 +2,7 @@ import { useState } from "react";
 import List from "./List";
 import {add,del} from '../store/action'
 import * as type from './type'
+import React from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 const Form = () =>
 {
@@ -55,6 +56,7 @@ const Form = () =>
     return(
         <>
         <form onSubmit={submitted}>
+            <img src='https://www.allaboutlean.com/wp-content/uploads/2018/10/Reddit-Logo-NOTEXT-2.png' style={{height:100,width:100}} alt='img' />
             <label> username<input type='text' name='uname' value={uname} onChange={changeUname} /></label><br></br>
             <label> age<input type='number' name='age' value={age} onChange={changeAge} /></label><br></br>
             <input type='submit' value='submit' />

@@ -1,49 +1,49 @@
 {
   "name": "practice",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "This project has been created using **webpack-cli**, you can now run",
+  "main": "index.tsx",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "bootstrap": "^5.1.1",
-    "firebase": "^9.0.2",
-    "firebase-admin": "^9.11.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.12.0",
     "react-redux": "^7.2.5",
-    "react-scripts": "4.0.3",
     "redux": "^4.1.1",
-    "redux-saga": "^1.1.3",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "redux-saga": "^1.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "@types/node": "^12.12.5",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "serve": "^11.3.0",
+    "terser-webpack-plugin": "^2.3.2",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "webpack-dev-server --port 3000  --open --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vismay-addweb/shared.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vismay-addweb/shared/issues"
+  },
+  "homepage": "https://github.com/Vismay-addweb/shared#readme"
 }
